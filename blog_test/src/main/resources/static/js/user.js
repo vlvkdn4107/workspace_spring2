@@ -1,3 +1,6 @@
+// index.init(); 했는지 확인 하기!
+// url 잘 보기!!!! 
+
 let index = {
 	init: function(){
 		$("#btn-save").bind("click", () =>{
@@ -6,8 +9,8 @@ let index = {
 		});
 		$("#btn-login").bind("click",() =>{
 			alert("login 버튼이 눌러 졌습니다.");
-			this.login
-		})
+			this.login();
+		});
 	},
 	save: function(){
 		let data = {
@@ -30,12 +33,13 @@ let index = {
 	},
 	login: function(){
 		let data = {
-			username: $("username").val(),
-			password: $("password").val()
+			username: $("#username").val(),
+			password: $("#password").val()
 		}
+		console.log(data);
 		$.ajax({
 			type: "POST",
-			url: "api/user/login",
+			url: "/api/user/login",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json"

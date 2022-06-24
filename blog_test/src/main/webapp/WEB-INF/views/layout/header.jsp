@@ -27,36 +27,39 @@
   <body>
     
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <!-- Brand -->
+    
       <a class="navbar-brand" href="/">블로그</a>
 
-      <!-- Toggler/collapsibe Button -->
+    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
 		
-      <!-- Navbar links -->
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
+        	<c:choose>
+        		<c:when test="${empty sessionScope.principal}">
         			 <li class="nav-item">
 			            <a class="nav-link" href="/user/login_form">로그인</a>
 			         </li>
 			         <li class="nav-item">
 			            <a class="nav-link" href="/user/join_form">회원가입</a>
  					</li>
-        		
+        		</c:when>
+        		<c:otherwise>
         		 <li class="nav-item">
-		            <a class="nav-link" href="/boardsave_form">글쓰기</a>
+		            <a class="nav-link" href="/boardSave_form">글쓰기</a>
 		         </li>
 		         <li class="nav-item">
 		            <a class="nav-link" href="/user/logout">로그아웃</a>
 		        </li>
+        		</c:otherwise>
+        	</c:choose>
         </ul>
       </div>
     </nav>
     <br />
-    <!-- body 부분이 생성되고 밑으로 흐름을 따라내려오기때문에 마지막에 해줘야한다 이게 인터프린터이다 
-     자바스크립트는 반정도의 컴파일과정을 거친다. 이유는 성능개선을 위해서 구글이 해놓음-->
+ 
  
 </body>
 </html>
